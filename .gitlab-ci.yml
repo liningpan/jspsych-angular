@@ -1,0 +1,15 @@
+# This file is a template, and might need editing before it works on your project.
+# Official framework image. Look for the different tagged releases at:
+# https://hub.docker.com/r/library/node/tags/
+image: registry.internal.psych.dev/internal-che/che-dockerfile/che-node-angular:node-12.18.3.angular-10.0.7
+
+# This folder is cached between builds
+# http://docs.gitlab.com/ce/ci/yaml/README.html#cache
+cache:
+  paths:
+    - node_modules/
+
+test:
+  script:
+    - yarn install
+    - yarn test
