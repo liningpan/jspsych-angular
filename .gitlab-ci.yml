@@ -1,16 +1,37 @@
 # This file is a template, and might need editing before it works on your project.
 # Official framework image. Look for the different tagged releases at:
 # https://hub.docker.com/r/library/node/tags/
+stages:
+  - intsall-dep
+  - build
+  - test
+
 image: registry.internal.psych.dev/internal-che/che-dockerfile/che-node-angular:node-12.18.3.angular-10.0.7
 
 # This folder is cached between builds
 # http://docs.gitlab.com/ce/ci/yaml/README.html#cache
 cache:
   paths:
+    - dist/
     - node_modules/
 
-test:
+install-dep:
+  stage: install-dep
   script:
     - yarn install
+
+build:
+  stage: build
+  script:
     - yarn build jspsych
-    - yarn test
+    - yarn build jspsych-angular
+
+test-jspsych-library:
+  stage: test
+  script:
+    - yarn test jspsych
+
+test-jspsych-app:
+  stage:test
+  script:
+    - yarn test jspsych-angular

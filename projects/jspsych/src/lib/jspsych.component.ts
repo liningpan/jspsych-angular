@@ -2,13 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'lib-jspsych',
-  template: `
-    <p>
-      jspsych works!
-    </p>
-  `,
-  styles: [
-  ]
+  templateUrl: './jspsych.component.html',
+  styleUrls: ['./jspsych.component.scss']
 })
 export class JspsychComponent implements OnInit {
 

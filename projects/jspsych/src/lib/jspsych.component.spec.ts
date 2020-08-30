@@ -22,4 +22,9 @@ describe('JspsychComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should show message', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('p').textContent).toContain('jspsych works!');
+  });
 });
