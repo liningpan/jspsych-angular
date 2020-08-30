@@ -32,6 +32,6 @@ test-jspsych-library:
     - yarn test jspsych
 
 test-jspsych-app:
-  stage:test
+  stage: test
   script:
     - yarn test jspsych-angular
