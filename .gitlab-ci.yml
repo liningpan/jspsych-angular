@@ -28,6 +28,8 @@ build:
   artifacts:
     paths:
       - dist/
+  cache:
+    policy: pull
 
 test-jspsych-library:
   stage: test
@@ -36,11 +38,15 @@ test-jspsych-library:
     artifacts: true
   script:
     - yarn test jspsych
+  cache:
+    policy: pull
 
 test-jspsych-app:
   stage: test
   needs: 
     job: build
     artifacts: true
+  cache:
+    policy: pull
   script:
     - yarn test jspsych-angular
