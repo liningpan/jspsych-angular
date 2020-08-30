@@ -12,4 +12,5 @@ cache:
 test:
   script:
     - yarn install
+    - yarn build jspsych
     - yarn test
