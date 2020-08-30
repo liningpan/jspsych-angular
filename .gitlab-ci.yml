@@ -11,9 +11,8 @@ image: registry.internal.psych.dev/internal-che/che-dockerfile/che-node-angular:
 # This folder is cached between builds
 # http://docs.gitlab.com/ce/ci/yaml/README.html#cache
 cache:
-  key: "$CI_JOB_NAME-$CI_COMMIT_REF_SLUG"
+  key: "$CI_COMMIT_REF_SLUG"
   paths:
-    - dist/
     - node_modules/
 
 install-dep:
@@ -26,13 +25,22 @@ build:
   script:
     - yarn build jspsych
     - yarn build jspsych-angular
+  artifacts:
+    paths:
+      - dist/
 
 test-jspsych-library:
   stage: test
+  needs: 
+    job: build_job
+    artifacts: true
   script:
     - yarn test jspsych
 
 test-jspsych-app:
   stage: test
+  needs: 
+    job: build_job
+    artifacts: true
   script:
     - yarn test jspsych-angular
