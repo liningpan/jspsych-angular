@@ -28,7 +28,8 @@ export function factorial(factors: object, repetitions: number = 1, unpack: bool
 export function randomID(length?: number): string {
   let result: string = "";
   length = length ?? 32;
-  const chars = '0123456789abcdefghjklmnopqrstuvwxyz';
+  //no i ?
+  const chars = '0123456789abcdefghijklmnopqrstuvwxyz';
   for (let i = 0; i < length; i++) {
     result += chars[Math.floor(Math.random() * chars.length)];
   }
