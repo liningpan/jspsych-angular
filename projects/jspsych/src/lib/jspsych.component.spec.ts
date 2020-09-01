@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { JspsychComponent } from './jspsych.component';
+import { PluginAPIService } from './plugin-api.service';
 
 describe('JspsychComponent', () => {
   let component: JspsychComponent;
@@ -8,7 +9,8 @@ describe('JspsychComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ JspsychComponent ]
+      declarations: [ JspsychComponent ],
+      providers: [ PluginAPIService ]
     })
     .compileComponents();
   }));

@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { JspsychComponent } from './jspsych.component';
+import { PluginAPIService } from './plugin-api.service';
+import { DataService } from './data.service';
+import { TimelineService } from './timeline.service';
 
 
 
@@ -7,6 +10,7 @@ import { JspsychComponent } from './jspsych.component';
   declarations: [JspsychComponent],
   imports: [
   ],
-  exports: [JspsychComponent]
+  exports: [JspsychComponent],
+  providers: [ PluginAPIService, DataService, TimelineService ]
 })
 export class JspsychModule { }
