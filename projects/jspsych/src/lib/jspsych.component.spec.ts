@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { JspsychComponent } from './jspsych.component';
-import { PluginAPIService } from './plugin-api.service';
+import { EventService } from './event.service';
 
 describe('JspsychComponent', () => {
   let component: JspsychComponent;
@@ -10,7 +10,9 @@ describe('JspsychComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ JspsychComponent ],
-      providers: [ PluginAPIService ]
+      providers: [
+        EventService
+      ]
     })
     .compileComponents();
   }));
@@ -28,5 +30,16 @@ describe('JspsychComponent', () => {
   it('should show message', () => {
     const compiled = fixture.nativeElement;
     expect(compiled.querySelector('p').textContent).toContain('jspsych works!');
+  });
+
+  it('should detect keydown event', () => {
+    let debugElement = fixture.debugElement;
+    let eventService = debugElement.injector.get(EventService);
+    const spy = spyOn(eventService, 'root_keydown_listener');
+    const event = new KeyboardEvent("keydown",{
+        "key": "Enter"
+    });
+    window.dispatchEvent(event);
+    expect(spy).toHaveBeenCalled();
   });
 });

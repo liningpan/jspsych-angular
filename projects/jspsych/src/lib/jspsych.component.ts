@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, AfterViewInit } from '@angular/core';
-import { PluginAPIService } from './plugin-api.service';
+import { Component, OnInit, ViewChild, ViewContainerRef, AfterViewInit, HostListener } from '@angular/core';
+import { EventService } from './event.service';
 
 @Component({
   selector: 'lib-jspsych',
@@ -9,17 +9,25 @@ import { PluginAPIService } from './plugin-api.service';
 export class JspsychComponent implements OnInit, AfterViewInit {
   @ViewChild("vc", {read: ViewContainerRef}) vc: ViewContainerRef;
 
-  constructor(private pluginApiService: PluginAPIService) {
-    this.pluginApiService
+  constructor(private eventService: EventService) {
   }
+
   ngAfterViewInit(): void {
-    // Initialize jsPsych Container
-    // Run ininitialization process
-    // Run preload
-    // throw new Error("Method not implemented.");
+    this.eventService.reset();
+    // this.eventService.createKeyboardEventListeners();
   }
 
   ngOnInit(): void {
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  onKeyDown(ev:KeyboardEvent) {
+    this.eventService.root_keydown_listener(ev);
+  }
+
+  @HostListener('window:keyup', ['$event'])
+  onKeyUp(ev:KeyboardEvent) {
+    this.eventService.root_keyup_listener(ev);
   }
 
 }

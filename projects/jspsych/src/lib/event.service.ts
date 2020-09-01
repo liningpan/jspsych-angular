@@ -6,15 +6,17 @@ import { ResponseType } from './response-type';
 @Injectable({
   providedIn: 'root'
 })
-export class PluginAPIService {
+export class EventService {
   private keyboard_listeners: any[] = [];
 
   private held_keys = {};
 
+  constructor() { }
 
   // private root_element: ElementRef
 
   root_keydown_listener(e: KeyboardEvent) {
+    console.log("keydown detected");
     for (var i = 0; i < this.keyboard_listeners.length; i++) {
       this.keyboard_listeners[i].fn(e);
     }
@@ -25,16 +27,14 @@ export class PluginAPIService {
     this.held_keys[e.keyCode] = false;
   }
 
-  // reset(root_element){
-  //   this.keyboard_listeners = [];
-  //   this.held_keys = {};
-  //   root_element.removeEventListener('keydown', this.root_keydown_listener);
-  //   root_element.removeEventListener('keyup', this.root_keyup_listener);
-  // }
+  reset(){
+    this.keyboard_listeners = [];
+    this.held_keys = {};
+  }
 
-  // createKeyboardEventListeners(root_element) {
-  //   root_element.addEventListener('keydown', this.root_keydown_listener);
-  //   root_element.addEventListener('keyup', this.root_keyup_listener);
+  // createKeyboardEventListeners() {
+  //   this.window.addEventListener('keydown', this.root_keydown_listener);
+  //   this.window.addEventListener('keyup', this.root_keyup_listener);
   // }
 
   getKeyboardResponse(parameters) {
@@ -179,8 +179,5 @@ export class PluginAPIService {
     }
     return this.audio_buffers[audioID];
   }
-
-
-  constructor() { }
 }
 
