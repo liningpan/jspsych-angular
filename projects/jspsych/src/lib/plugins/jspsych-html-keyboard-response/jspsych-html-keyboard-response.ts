@@ -44,15 +44,12 @@ export class JspsychHtmlKeyboardResponse extends AbstractPlugin {
     // register keyboard at module root level
     // start the response listener
 
-
-    let self = this;
-
     if (this.trial.choices != 'nokeys') {
       this.keyboardListener = this.eventService.getKeyboardResponse({
         callback_function: (info) => {
-          self.after_response(info);
+          this.after_response(info);
         },
-        valid_responses: self.trial.choices,
+        valid_responses: this.trial.choices,
         rt_method: 'performance',
         persist: false,
         allow_held_key: false
@@ -61,15 +58,15 @@ export class JspsychHtmlKeyboardResponse extends AbstractPlugin {
 
     // hide stimulus if stimulus_duration is set
     if (this.trial.stimulus_duration !== null) {
-      this.eventService.setTimeout(function () {
-        self.hidden = true;
+      this.eventService.setTimeout( ()=> {
+        this.hidden = true;
       }, this.trial.stimulus_duration);
     }
 
     // end trial if trial_duration is set
     if (this.trial.trial_duration !== null) {
-      this.eventService.setTimeout(function () {
-        self.end_trial();
+      this.eventService.setTimeout(() => {
+        this.end_trial();
       }, this.trial.trial_duration);
     }
   }

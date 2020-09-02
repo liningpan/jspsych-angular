@@ -58,8 +58,7 @@ export class EventService {
 
     var listener_id;
 
-    var context = this;
-    var listener_function = function (e) {
+    var listener_function = (e) => {
       var key_time;
       if (parameters.rt_method == 'performance') {
         key_time = performance.now();
@@ -103,7 +102,7 @@ export class EventService {
       // check if key was already held down
 
       if (((typeof parameters.allow_held_key == 'undefined') || !parameters.allow_held_key) && valid_response) {
-        if (typeof context.held_keys[e.key] !== 'undefined' && context.held_keys[e.key] == true) {
+        if (typeof this.held_keys[e.key] !== 'undefined' && this.held_keys[e.key] == true) {
           valid_response = false;
         }
       }
@@ -118,10 +117,10 @@ export class EventService {
           rt: key_time - start_time
         });
 
-        if (context.keyboard_listeners.includes(listener_id)) {
+        if (this.keyboard_listeners.includes(listener_id)) {
           if (!parameters.persist) {
             // remove keyboard listener
-            context.cancelKeyboardResponse(listener_id);
+            this.cancelKeyboardResponse(listener_id);
           }
         }
       }
