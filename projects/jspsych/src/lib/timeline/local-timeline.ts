@@ -2,10 +2,10 @@ import { Timeline } from './timeline-interface';
 import { TimelineNode } from './timeline-node';
 
 /**
- * Provide standarized timeline interface
+ * Provide standardized timeline interface
  * Provide locally evaluated timeline
  * Hide recursive evaluation from highlevel api
- * Process timeline presistence
+ * Process timeline persistence
  */
 export class LocalTimeline implements Timeline {
 
