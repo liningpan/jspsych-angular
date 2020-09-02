@@ -45,4 +45,6 @@ export class JspsychComponent implements OnInit, AfterViewInit {
 
   }
 
+  // TODO: add interaction listeners
+  // Commit data directly to data service
 }

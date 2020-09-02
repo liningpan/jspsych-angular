@@ -158,7 +158,7 @@ export class EventService {
     return handle;
   }
 
-  clearAllTimeouts = function () {
+  clearAllTimeouts() {
     for (var i = 0; i < this.timeout_handlers.length; i++) {
       clearTimeout(this.timeout_handlers[i]);
     }
@@ -178,7 +178,7 @@ export class EventService {
     // this.context = (jsPsych.initSettings().use_webaudio === true) ? jsPsych.webaudio_context : null;
   }
 
-  audioContext = function () {
+  audioContext() {
     if (this.context !== null) {
       if (this.context.state !== 'running') {
         this.context.resume();
@@ -187,7 +187,7 @@ export class EventService {
     return this.context;
   }
 
-  getAudioBuffer = function (audioID) {
+  getAudioBuffer(audioID) {
     if (this.audio_buffers[audioID] === 'tmp') {
       console.error('Audio file failed to load in the time allotted.')
       return;
