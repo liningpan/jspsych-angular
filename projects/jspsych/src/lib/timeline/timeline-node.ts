@@ -130,7 +130,7 @@ export class TimelineNode {
     // if node has not started yet (progress.current_location == -1),
     // then try to start the node.
     if (this.progress.current_location == -1) {
-      // check for conditonal function on nodes with timelines
+      // check for conditional function on nodes with timelines
       if (typeof this.timeline_parameters != 'undefined') {
         if (typeof this.timeline_parameters.conditional_function !== 'undefined') {
           var conditional_result = this.timeline_parameters.conditional_function();
@@ -156,7 +156,7 @@ export class TimelineNode {
       return this.advance();
     }
 
-    // if this node has a timeline, propogate down to the current trial.
+    // if this node has a timeline, propagate down to the current trial.
     if (typeof this.timeline_parameters !== 'undefined') {
 
       var have_node_to_run = false;
