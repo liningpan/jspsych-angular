@@ -1,0 +1,27 @@
+matrix:
+- name: javascript
+    pipeline:
+    - pyspelling.filters.javascript
+        jsdocs: true
+        line_comments: true
+        block_comments: true
+    sources:
+    - src/**/*.js
+    - src/**/*.ts
+    - projects/**/*.js
+    - projects/**/*.ts
+- name: Markdown
+  aspell:
+    lang: en
+  dictionary:
+    encoding: utf-8
+  pipeline:
+  - pyspelling.filters.markdown:
+  - pyspelling.filters.html:
+    comments: false
+    ignores:
+    - code
+    - pre
+  sources:
+  - '**/*.md'
+  default_encoding: utf-8

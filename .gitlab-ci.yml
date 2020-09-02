@@ -2,58 +2,81 @@
 # Official framework image. Look for the different tagged releases at:
 # https://hub.docker.com/r/library/node/tags/
 stages:
-  - install-dep
-  - build
+  # - install-dep
+  # - build
   - test
+  - spell-check
 
 image: registry.internal.psych.dev/internal-che/che-dockerfile/che-node-angular:node-12.18.3.angular-10.0.7
 
-install-dep:
-  stage: install-dep
+test:
+  needs: []
+  stage: test
   script:
     - yarn install
+    - yarn build jspsych
+    - yarn build jspsych-angular
+    - yarn test jspsych
+    - yarn test jspsych-angular
   cache:
     key: "$CI_COMMIT_REF_SLUG"
     paths:
       - node_modules/
     policy: pull-push
 
-build:
-  stage: build
-  script:
-    - yarn build jspsych
-    - yarn build jspsych-angular
-  artifacts:
-    paths:
-      - dist/
-  cache:
-    key: "$CI_COMMIT_REF_SLUG"
-    paths:
-      - node_modules/
-    policy: pull
+spell-check:
+  needs: []
+  stage: spell-check
+  image: jonasbn/github-action-spellcheck:0.5.0
 
-test-jspsych-library:
-  stage: test
-  needs: 
-    job: build
-    artifacts: true
-  script:
-    - yarn test jspsych
-  cache:
-    key: "$CI_COMMIT_REF_SLUG"
-    paths:
-      - node_modules/
-    policy: pull
 
-test-jspsych-app:
-  stage: test
-  needs: 
-    job: build
-    artifacts: true
-  cache:
-    key: "$CI_COMMIT_REF_SLUG"
-    paths:
-      - node_modules/
-    policy: pull
-  script:
-    - yarn test jspsych-angular
+
+# install-dep:
+#   stage: install-dep
+#   script:
+#     - yarn install
+#   cache:
+#     key: "$CI_COMMIT_REF_SLUG"
+#     paths:
+#       - node_modules/
+#     policy: pull-push
+
+# build:
+#   stage: build
+#   script:
+#     - yarn build jspsych
+#     - yarn build jspsych-angular
+#   artifacts:
+#     paths:
+#       - dist/
+#   cache:
+#     key: "$CI_COMMIT_REF_SLUG"
+#     paths:
+#       - node_modules/
+#     policy: pull
+
+# test-jspsych-library:
+#   stage: test
+#   needs: 
+#     job: build
+#     artifacts: true
+#   script:
+#     - yarn test jspsych
+#   cache:
+#     key: "$CI_COMMIT_REF_SLUG"
+#     paths:
+#       - node_modules/
+#     policy: pull
+
+# test-jspsych-app:
+#   stage: test
+#   needs: 
+#     job: build
+#     artifacts: true
+#   cache:
+#     key: "$CI_COMMIT_REF_SLUG"
+#     paths:
+#       - node_modules/
+#     policy: pull
+#   script:
+#     - yarn test jspsych-angular
