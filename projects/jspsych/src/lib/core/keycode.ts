@@ -1,4 +1,7 @@
+import { Key } from 'ts-key-enum';
+
 // We cannot use typescript enum type and keep the same key name as jsPsych
+// Key code is no longer supported
 export const KeyCode = {
   'backspace': 8,
   'tab': 9,
@@ -124,3 +127,6 @@ export function compareKeys(key1: string | number, key2: string | number) {
   }
   return key1 == key2;
 }
+
+
+

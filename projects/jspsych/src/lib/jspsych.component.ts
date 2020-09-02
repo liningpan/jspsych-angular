@@ -1,19 +1,22 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, AfterViewInit, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, AfterViewInit, HostListener, ComponentFactoryResolver } from '@angular/core';
 import { EventService } from './event.service';
+import { JspsychHtmlKeyboardResponse } from './plugins/jspsych-html-keyboard-response/jspsych-html-keyboard-response';
 
 @Component({
   selector: 'lib-jspsych',
   templateUrl: './jspsych.component.html',
-  styleUrls: ['./jspsych.component.scss']
+  styleUrls: ['./jspsych.component.scss'],
+  providers: [ EventService ],
 })
 export class JspsychComponent implements OnInit, AfterViewInit {
-  @ViewChild("vc", {read: ViewContainerRef}) vc: ViewContainerRef;
+  @ViewChild("vc", { read: ViewContainerRef }) vc: ViewContainerRef;
+  private activePluginComponent;
 
-  constructor(private eventService: EventService) {
+  constructor(private eventService: EventService, private componentFactoryResolver: ComponentFactoryResolver) {
   }
 
   ngAfterViewInit(): void {
-    this.eventService.reset();
+    // this.eventService.reset();
     // this.eventService.createKeyboardEventListeners();
   }
 
@@ -21,13 +24,25 @@ export class JspsychComponent implements OnInit, AfterViewInit {
   }
 
   @HostListener('window:keydown', ['$event'])
-  onKeyDown(ev:KeyboardEvent) {
+  onKeyDown(ev: KeyboardEvent) {
     this.eventService.root_keydown_listener(ev);
   }
 
   @HostListener('window:keyup', ['$event'])
-  onKeyUp(ev:KeyboardEvent) {
+  onKeyUp(ev: KeyboardEvent) {
     this.eventService.root_keyup_listener(ev);
+  }
+
+  setCurrentTrial(trial: any){
+    this.loadPlugin();
+    this.activePluginComponent.instance.trial = trial;
+    this.activePluginComponent.instance.loadTrial();
+  }
+
+  loadPlugin() {
+    const factory = this.componentFactoryResolver.resolveComponentFactory(JspsychHtmlKeyboardResponse);
+    this.activePluginComponent = this.vc.createComponent(factory);
+
   }
 
 }

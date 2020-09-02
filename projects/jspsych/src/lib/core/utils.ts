@@ -1,4 +1,5 @@
 import * as clone from 'clone';
+import { Key } from 'ts-key-enum';
 
 export function flatten(arr: any[], out?: any[]) {
   out = out ?? [];
@@ -24,4 +25,13 @@ export function unique(arr: any[] | Set<any>): any[] {
 export function deepCopy(obj: any){
   // disable circular reference check
   return clone(obj, false);
+}
+
+export function isValidKey(key: string){
+  if(key.length == 1){
+    return true;
+  } else if((<any>Object).values(Key).includes(key)){
+    return true;
+  }
+  return false;
 }

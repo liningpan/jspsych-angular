@@ -5,7 +5,8 @@
     "@angular/common": "^10.0.14",
     "@angular/core": "^10.0.14",
     "clone": "^2.1.2",
-    "json2csv": "^5.0.1"
+    "json2csv": "^5.0.1",
+    "ts-key-enum": "^2.0.3"
   },
   "dependencies": {
     "tslib": "2.0.1"
