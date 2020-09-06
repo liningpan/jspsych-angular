@@ -12,7 +12,7 @@ stages:
 test:
   needs: []
   stage: test
-  image: registry.internal.psych.dev/internal-che/che-dockerfile/che-node-angular:node-12.18.3.angular-10.0.7
+  image: registry.internal.psych.dev/internal-che/dockerfiles/che-node-angular/che-node-angular:node-12.18.3.angular-10.1.0
   script:
     - yarn install
     - yarn build jspsych
