@@ -339,7 +339,8 @@ export class TimelineNode {
   // get all the data generated within this node
   generatedData() {
     // TODO: How to get global data store? through data service
-    //return data.getDataByTimelineNode(this.ID());
+    // this function should be provided by higherlevel api
+    // return data.getDataByTimelineNode(this.ID());
   }
 
   // get all the trials of a particular type
