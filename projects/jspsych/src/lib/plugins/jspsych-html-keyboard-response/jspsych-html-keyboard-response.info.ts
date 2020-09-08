@@ -42,6 +42,6 @@ export class JspsychHtmlKeyboardResponseInfo implements plugins.PluginInfo {
       description: 'If true, trial will end when subject makes a response.'
     }
   };
-  desciption = "";
+  description = "";
   component = JspsychHtmlKeyboardResponse;
 }

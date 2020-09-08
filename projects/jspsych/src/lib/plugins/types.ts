@@ -5,7 +5,7 @@ export namespace plugins {
   export interface PluginInfo {
     readonly name: string;
     readonly parameters: Record<string, TrialParameter>;
-    readonly desciption: string;
+    readonly description: string;
     readonly component: Type<AbstractPlugin>;
   }
 
