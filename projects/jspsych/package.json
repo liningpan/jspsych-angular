@@ -9,6 +9,6 @@
     "ts-key-enum": "^2.0.3"
   },
   "dependencies": {
-    "tslib": "2.0.2"
+    "tslib": "2.0.3"
   }
 }
