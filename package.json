@@ -22,7 +22,7 @@
     "clone": "2.1.2",
     "json2csv": "5.0.4",
     "rxjs": "6.6.3",
-    "ts-key-enum": "2.0.5",
+    "ts-key-enum": "2.0.6",
     "tslib": "2.0.3",
     "zone.js": "0.11.3"
   },
