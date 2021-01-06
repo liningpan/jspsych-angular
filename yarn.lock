@@ -8770,10 +8770,10 @@ tree-kill@1.2.2:
   resolved "https://registry.yarnpkg.com/tree-kill/-/tree-kill-1.2.2.tgz#4ca09a9092c88b73a7cdc5e8a01b507b0790a0cc"
   integrity sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==
 
-ts-key-enum@2.0.6:
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/ts-key-enum/-/ts-key-enum-2.0.6.tgz#e962d56a8a36da91ab549ce411a0e86973e4b9af"
-  integrity sha512-7yY9SHz3qDZOA2/5x9Q7t6tCYs9LJxmktDDASllzgJFML+rWuZGayOvj3nF5Go9Zyf9SVHNZf287unCONIDShA==
+ts-key-enum@2.0.7:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/ts-key-enum/-/ts-key-enum-2.0.7.tgz#ea2c6f3bd770257a3d70fd60625bc3e99d19ab1e"
+  integrity sha512-i5K1p6o5J2EMNS3DVpVdpsJnFMWNE01kBjnw5evS/XgBYiu/oo/mxamOOEVYn/uPbIaxl5iDVSbAcFCDY55tmw==
 
 ts-node@9.1.1:
   version "9.1.1"
