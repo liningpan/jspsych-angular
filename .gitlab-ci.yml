@@ -29,7 +29,7 @@ test:
     - merge_requests
 
 spell-check:
-  image: python:3.8
+  image: python:3.9
   script:
     - pip3 install codespell
     - codespell -c -f src/* projects/*
