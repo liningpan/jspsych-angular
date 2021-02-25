@@ -21,7 +21,7 @@
     "@angular/router": "10.2.4",
     "clone": "2.1.2",
     "json2csv": "5.0.6",
-    "rxjs": "6.6.3",
+    "rxjs": "6.6.6",
     "ts-key-enum": "2.0.7",
     "tslib": "2.1.0",
     "zone.js": "0.11.4"
