@@ -31,7 +31,7 @@
     "@angular-devkit/build-ng-packagr": "0.1002.0",
     "@angular/cli": "10.2.3",
     "@angular/compiler-cli": "10.2.5",
-    "@types/clone": "2.1.0",
+    "@types/clone": "2.1.1",
     "@types/jasmine": "3.7.4",
     "@types/jasminewd2": "2.0.9",
     "@types/json2csv": "5.0.2",
